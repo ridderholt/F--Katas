@@ -13,17 +13,16 @@ let CalculateDigit (d:int, l:int, levels:List<Level>) =
         let str = [1..loopEnd] |> List.map (fun i -> "M") |> String.concat ""
         str
     else
-        let index = int l
         match d with
-        | 1 -> levels.[index].i
-        | 2 -> String.Concat(levels.[index].i, levels.[index].i)
-        | 3 -> String.Concat(levels.[index].i, levels.[index].i, levels.[index].i)
-        | 4 -> String.Concat(levels.[index].i, levels.[index].v)
-        | 5 -> levels.[index].v
-        | 6 -> String.Concat(levels.[index].v, levels.[index].i)
-        | 7 -> String.Concat(levels.[index].v, levels.[index].i, levels.[index].i)
-        | 8 -> String.Concat(levels.[index].v, levels.[index].i, levels.[index].i, levels.[index].i)
-        | 9 -> String.Concat(levels.[index].i, levels.[index].x)
+        | 1 -> levels.[l].i
+        | 2 -> [levels.[l].i; levels.[l].i] |> String.concat ""
+        | 3 -> [levels.[l].i; levels.[l].i; levels.[l].i] |> String.concat ""
+        | 4 -> [levels.[l].i; levels.[l].v] |> String.concat ""
+        | 5 -> levels.[l].v
+        | 6 -> [levels.[l].v; levels.[l].i] |> String.concat ""
+        | 7 -> [levels.[l].v; levels.[l].i; levels.[l].i] |> String.concat ""
+        | 8 -> [levels.[l].v; levels.[l].i; levels.[l].i; levels.[l].i] |> String.concat ""
+        | 9 -> [levels.[l].i; levels.[l].x] |> String.concat ""
         | _ -> ""
 
 let ToRoman (num:int, levels:List<Level>) = 
