@@ -28,11 +28,8 @@ let CalculateDigit (d:int, l:int, levels:List<Level>) =
 
 let ToRoman (num:int, levels:List<Level>) = 
     let intArr = num.ToString() |> Seq.map (fun x -> Convert.ToInt32(string x)) |> Seq.toArray
-    let mutable res = ""
-    for c = 0 to intArr.Length - 1 do
-        res <- String.Concat(res, CalculateDigit(intArr.[c], intArr.Length - c - 1, levels))
+    let res = [0..intArr.Length-1] |> List.map (fun n -> CalculateDigit(intArr.[n], intArr.Length - n - 1, levels)) |> String.concat ""
     res
-
 
 [<EntryPoint>]
 let main argv = 
