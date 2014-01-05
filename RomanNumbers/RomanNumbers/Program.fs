@@ -9,10 +9,8 @@ type Level(i:string, v:string, x:string) =
 
 let CalculateDigit (d:int, l:int, levels:List<Level>) = 
     if l > 2 then
-        let mutable str = ""
         let loopEnd = d * int (10.0**(float l-3.0))
-        for m = 1 to loopEnd do 
-            str <- String.Concat(str, "M")
+        let str = [1..loopEnd] |> List.map (fun i -> "M") |> String.concat ""
         str
     else
         let index = int l
