@@ -1,15 +1,10 @@
-﻿// Learn more about F# at http://fsharp.net
-// See the 'F# Tutorial' project for more help.
-
-let ReverseWord (word:string) = 
-    word.ToCharArray() |> Seq.toList |> List.rev |> List.map (fun c -> string c) |> String.concat ""
-
+﻿open StringUtil
 
 [<EntryPoint>]
 let main argv = 
+    let backWords = Backwords()
 
-    printf "%s\r\n" <| ReverseWord "Robin"
-    
-    printf "%s\r\n" <| ReverseWord "niboR"
+    printf "%s\r\n" <| backWords.Parse "Robin"
+    printf "%s\r\n" <| backWords.Parse "niboR"
 
     0 // return an integer exit code
