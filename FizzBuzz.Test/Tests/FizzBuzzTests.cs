@@ -1,5 +1,4 @@
-﻿using System.Runtime.InteropServices;
-using Xunit;
+﻿using Xunit;
 
 namespace FizzBuzz.Test.Tests
 {
