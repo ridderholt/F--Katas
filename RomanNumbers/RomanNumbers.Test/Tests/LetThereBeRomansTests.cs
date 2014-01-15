@@ -1,7 +1,6 @@
 ﻿using System;
 using Roman;
 using Xunit;
-using Xunit.Extensions;
 
 namespace RomanNumbers.Test.Tests
 {
@@ -15,15 +14,6 @@ namespace RomanNumbers.Test.Tests
             var actual = romans.ToRoman(5);
 
             Assert.Equal(expected, actual);
-        }
-
-        [Theory, InlineData(1), InlineData(2), InlineData(3)]
-        public void Should_return_a_string(int n)
-        {
-            var romans = new LetThereBeRomans();
-            var result = romans.ToRoman(n);
-
-            Assert.IsType<string>(result);
         }
     }
 }
