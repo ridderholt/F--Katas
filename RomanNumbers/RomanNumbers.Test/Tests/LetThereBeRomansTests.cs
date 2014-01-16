@@ -1,6 +1,7 @@
 ﻿using System;
 using Roman;
 using Xunit;
+using Xunit.Extensions;
 
 namespace RomanNumbers.Test.Tests
 {
@@ -13,56 +14,11 @@ namespace RomanNumbers.Test.Tests
             _romans = new LetThereBeRomans();
         }
 
-        [Fact]
-        public void Should_return_X()
+        [Theory, InlineData(1, "I"), InlineData(10, "X"), InlineData(5, "V"), InlineData(50, "L"),
+        InlineData(100, "C"), InlineData(1000, "M"), InlineData(1337, "MCCCXXXVII")]
+        public void Should_return_roman_number(int n, string expected)
         {
-            var expected = "X";
-            var actual = _romans.ToRoman(10);
-
-            Assert.Equal(expected, actual);
-        }
-
-        [Fact]
-        public void Shold_return_V()
-        {
-            var expected = "V";
-            var actual = _romans.ToRoman(5);
-
-            Assert.Equal(expected, actual);
-        }
-
-        [Fact]
-        public void Should_return_L()
-        {
-            var expected = "L";
-            var actual = _romans.ToRoman(50);
-
-            Assert.Equal(expected, actual);
-        }
-
-        [Fact]
-        public void Should_return_C()
-        {
-            var expected = "C";
-            var actual = _romans.ToRoman(100);
-
-            Assert.Equal(expected, actual);
-        }
-
-        [Fact]
-        public void Should_return_M()
-        {
-            var expected = "M";
-            var actual = _romans.ToRoman(1000);
-
-            Assert.Equal(expected, actual);
-        }
-
-        [Fact]
-        public void Should_return_MCCCXXXVII()
-        {
-            var expected = "MCCCXXXVII";
-            var actual = _romans.ToRoman(1337);
+            var actual = _romans.ToRoman(n);
 
             Assert.Equal(expected, actual);
         }
