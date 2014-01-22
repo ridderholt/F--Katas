@@ -7,9 +7,7 @@ type Level(i:string, v:string, x:string) =
     member this.x = x
 
 type LetThereBeRomans() =
-    
     let levels = [new Level("I", "V", "X"); new Level("X", "L", "C"); new Level("C", "D", "M")]
-
     member private this.CalculateDigit (d:int, l:int, levels:List<Level>) = 
         if l > 2 then
             let loopEnd = d * int (10.0**(float l-3.0))
@@ -27,11 +25,7 @@ type LetThereBeRomans() =
             | 8 -> [levels.[l].v; levels.[l].i; levels.[l].i; levels.[l].i] |> String.concat ""
             | 9 -> [levels.[l].i; levels.[l].x] |> String.concat ""
             | _ -> ""
-
     member this.ToRoman(num:int) = 
         let intArr = num.ToString() |> Seq.map (fun x -> Convert.ToInt32(string x)) |> Seq.toArray
         let res = [0..intArr.Length-1] |> List.map (fun n -> this.CalculateDigit(intArr.[n], intArr.Length - n - 1, levels)) |> String.concat ""
         res
-
-
-
